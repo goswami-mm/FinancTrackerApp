@@ -1,0 +1,9 @@
+{
+  "name": "FinancTrackerApp",
+  "displayName": "FinancTrackerApp",
+  "android": {
+    "package": "com.FinancTrackerApp"
+  },
+  "version": "1.0.0",
+  "orientation": "portrait"
+}
