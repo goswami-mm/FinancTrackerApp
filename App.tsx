@@ -1,57 +1,41 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState } from 'react';
+import { useColorScheme } from 'react-native';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-  View,
-} from 'react-native';
+import SplashScreen from './screen/splash/SplashScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Expenses from './screen/home/Expenses/Expenses';
+import Dashboard from './screen/home/Dashboard';
+import Signup from './screen/auth/Signup';
+import { NavigationContainer } from '@react-navigation/native';
 
-import SplashScreen from './android/screen/splash/SplashScreen';
+const Stack = createNativeStackNavigator();
 
+function DashboardStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Dashboard} />
+      <Stack.Screen name="Expenses" component={Expenses} />
+    </Stack.Navigator>
+  );
+}
+
+function AuthStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Dashboard} />
+      <Stack.Screen name="Signup" component={Signup} />
+    </Stack.Navigator>
+  );
+}
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
-
   return (
-    <SafeAreaView>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic">
-        <SplashScreen />
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <AuthStack />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
