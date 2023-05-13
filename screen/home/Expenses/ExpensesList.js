@@ -6,4 +6,4 @@ function ExpensesList() {
     </View>
 }
 
-export default Expenses;
+export default ExpensesList;
